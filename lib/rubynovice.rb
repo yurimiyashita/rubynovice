@@ -1,10 +1,27 @@
 require "rubynovice/version"
+require "rubynovice/donkey"
 
-module Rubynovice
+class Rubynovice
+  attr_accessor :classes
   # Your code goes here...
-  def ex1
-    return "hello world.\n"
+  def initialize
+    name = 'donkey'
+    case name
+    when 'donkey'
+      @classes = Donkey.new
+    end
   end
 
-  module_function :ex1 #need for public module func.
+  def ex1_1
+    return @classes.ex1_1
+  end
+
+  def ex1_2
+    return @classes.ex1_2
+  end
+
+  def ex1_3
+    return @classes.ex1_3
+  end
+
 end

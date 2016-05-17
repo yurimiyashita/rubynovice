@@ -1,3 +1,3 @@
-module Rubynovice
+class Rubynovice
   VERSION = "0.1.0"
 end
