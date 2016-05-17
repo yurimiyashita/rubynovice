@@ -25,6 +25,6 @@ describe Rubynovice do
   end
   #出力として変数に"ans=2\n"を代入してprintfで出力させて，
   #その変数をreturnするようにするとprintfの使い方とあわせて
-  #テスト駆動させている感じにみえる．
+  #テスト駆動させている感じにみえる．rake時に緑字だけでなく，printfの出力についても確認．
 
 end
