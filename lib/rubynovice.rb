@@ -1,14 +1,15 @@
 require "rubynovice/version"
 require "rubynovice/donkey"
+require "rubynovice/yamane"
 
 class Rubynovice
   attr_accessor :classes
   # Your code goes here...
   def initialize
-    name = 'donkey'
+    name = 'yamane'
     case name
-    when 'donkey'
-      @classes = Donkey.new
+    when 'yamane'
+      @classes = Yamane.new
     end
   end
 
