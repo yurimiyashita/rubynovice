@@ -13,6 +13,11 @@ Ruby programming mastering platform using Github
 - class Donkeyに解答をつくる
 - 書き方はdonkey.rbを参照のこと．
 
+## specに個人の検査を反映させるために
+- setenv RUBYNOVICE_NAME hogehoge
+とかします．ここにはできるだけ個人情報(accountなど)がばれないものをいれるように
+してください．
+
 ## 課題
 1. [ex1(gets puts)](file.ex1.html)
 1. [ex2(loop)](file.ex2.html)

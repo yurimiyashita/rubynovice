@@ -229,7 +229,29 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Rubynovice) <strong>initialize</strong> </a>
+      <a href="#ex2_1-instance_method" title="#ex2_1 (instance method)">- (Object) <strong>ex2_1</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Rubynovice) <strong>initialize</strong>(name) </a>
     
 
     
@@ -261,7 +283,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Rubynovice (class)">Rubynovice</a></span></tt>) <strong>initialize</strong> 
+    - (<tt><span class='object_link'><a href="" title="Rubynovice (class)">Rubynovice</a></span></tt>) <strong>initialize</strong>(name) 
   
 
   
@@ -284,22 +306,24 @@
       <pre class="lines">
 
 
-7
 8
 9
 10
 11
 12
-13</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 8</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
-  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>donkey</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_name'>name</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>donkey</span><span class='tstring_end'>&#39;</span></span>
-    <span class='ivar'>@classes</span> <span class='op'>=</span> <span class='const'>Donkey</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>def1</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@classes</span> <span class='op'>=</span> <span class='const'>Def1</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>daddy</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@classes</span> <span class='op'>=</span> <span class='const'>Daddy</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -340,12 +364,12 @@
       <pre class="lines">
 
 
-5
 6
-7</pre>
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_classes'>classes</span>
   <span class='ivar'>@classes</span>
@@ -377,12 +401,12 @@
       <pre class="lines">
 
 
-15
-16
-17</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ex1_1'>ex1_1</span>
   <span class='kw'>return</span> <span class='ivar'>@classes</span><span class='period'>.</span><span class='id identifier rubyid_ex1_1'>ex1_1</span>
@@ -407,12 +431,12 @@
       <pre class="lines">
 
 
-19
-20
-21</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ex1_2'>ex1_2</span>
   <span class='kw'>return</span> <span class='ivar'>@classes</span><span class='period'>.</span><span class='id identifier rubyid_ex1_2'>ex1_2</span>
@@ -437,15 +461,45 @@
       <pre class="lines">
 
 
-23
-24
-25</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ex1_3'>ex1_3</span>
   <span class='kw'>return</span> <span class='ivar'>@classes</span><span class='period'>.</span><span class='id identifier rubyid_ex1_3'>ex1_3</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ex2_1-instance_method">
+  
+    - (<tt>Object</tt>) <strong>ex2_1</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/rubynovice.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ex2_1'>ex2_1</span>
+  <span class='kw'>return</span> <span class='ivar'>@classes</span><span class='period'>.</span><span class='id identifier rubyid_ex2_1'>ex2_1</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -457,7 +511,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed May 18 10:33:43 2016 by
+  Generated on Wed May 18 16:56:24 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>

@@ -1,15 +1,16 @@
 require "rubynovice/version"
-require "rubynovice/donkey"
-require "rubynovice/bob"
+require "rubynovice/def1"
+require "daddy/daddy"
 
 class Rubynovice
   attr_accessor :classes
   # Your code goes here...
-  def initialize
-    name = 'bob'
+  def initialize(name)
     case name
-    when 'bob'
-      @classes = Bob.new
+    when 'def1'
+      @classes = Def1.new
+    when 'daddy'
+      @classes = Daddy.new
     end
   end
 
@@ -23,6 +24,10 @@ class Rubynovice
 
   def ex1_3
     return @classes.ex1_3
+  end
+
+  def ex2_1
+    return @classes.ex2_1
   end
 
 end

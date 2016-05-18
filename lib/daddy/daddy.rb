@@ -1,4 +1,4 @@
-class Bob
+class Daddy
 
   def ex1_1
     return "hello world.\n"

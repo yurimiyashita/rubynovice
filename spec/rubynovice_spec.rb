@@ -2,30 +2,32 @@
 require 'spec_helper'
 
 describe Rubynovice do
+  before do
+    name=ENV['RUBYNOVICE_NAME']
+    @rubynovice = Rubynovice.new(name)
+  end
+
   it 'has a version number' do
     print Rubynovice::VERSION+"\n"
     expect(Rubynovice::VERSION).not_to be nil
   end
 
   it 'ex1_1 prints hello world' do
-    rubynovice = Rubynovice.new
     expected = "hello world.\n"
-    print rubynovice.ex1_1
-    expect(rubynovice.ex1_1).to eq(expected)
+    print @rubynovice.ex1_1
+    expect(@rubynovice.ex1_1).to eq(expected)
   end
   #ここは普通にreturn "hello world.\n"として作成してくれるのを期待する．
 
   it 'ex1_2 return 1+1' do
-    rubynovice = Rubynovice.new
     expected = 2
-    expect(rubynovice.ex1_2).to eq(expected)
+    expect(@rubynovice.ex1_2).to eq(expected)
   end
   #1+1を変数に代入するかもしくはそのまま返されるのを期待する．
-  
+
   it 'ex1_3 printf ans=2\n' do
-    rubynovice = Rubynovice.new
     expected = "ans=2\n"
-    expect(rubynovice.ex1_3).to eq(expected)
+    expect(@rubynovice.ex1_3).to eq(expected)
   end
   #出力として変数に"ans=2\n"を代入してprintfで出力させて，
   #その変数をreturnするようにするとprintfの使い方とあわせて

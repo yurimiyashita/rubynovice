@@ -1,4 +1,4 @@
-class Donkey
+class Def1
 
   def ex1_1
     return "hello world.\n"
