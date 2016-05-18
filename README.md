@@ -14,6 +14,8 @@ Ruby programming mastering platform using Github
 - 書き方はdonkey.rbを参照のこと．
 
 ## 課題
-1. [ex1](file.ex1.html)
-1. [ex2](file.ex2.html)
-1. [ex3](file.ex3.html)
+1. [ex1(gets puts)](file.ex1.html)
+1. [ex2(loop)](file.ex2.html)
+1. [ex3(array)](file.ex3.html)
+1. [ex4(if)](file.ex4.html)
+1. [ex5(method)](file.ex5.html)

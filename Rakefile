@@ -29,7 +29,7 @@ task :update =>[:setenv] do
   system 'git add -A'
   system 'git commit'
   system 'git push -u origin master'
-  system 'bundle exec rake release'
+#  system 'bundle exec rake release'
 end
 
 desc "setenv for release from Kwansei gakuin."
