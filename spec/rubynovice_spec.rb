@@ -3,8 +3,7 @@ require 'spec_helper'
 
 describe Rubynovice do
   before do
-    name=ENV['RUBYNOVICE_NAME']
-    @rubynovice = Rubynovice.new(name)
+    @rubynovice = Rubynovice.new
   end
 
   it 'has a version number' do

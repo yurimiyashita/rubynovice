@@ -1,14 +1,14 @@
 !Ex2. Loop
 
-!!Ex2_2:times
+!!Ex2_1:times
 
 百回愛してると表示する．
-<<<
-100.times do
-  puts "I love Haruyo."
+<<< ruby
+1.times do
+  puts "I love Shunkun."
 end 
 >>>
-!!Ex2_3:for-loop
+!!Ex2_2:for-loop
 <<< tcsh
 1
 2
@@ -17,13 +17,13 @@ end
 5
 >>>
 
-<<< tcsh
+<<< ruby
 for i in 1..5 do
   puts i
 end
 >>>
 
-!!Ex2_4:while
+!!Ex2_3:while
 <<<
 while 条件文 do
   繰り返し
@@ -37,7 +37,7 @@ end
 2
 >>>
 
-!!Ex2_5:二重ループ(printを使って．．)(doubleLoop)
+!!Ex2_4:二重ループ(printを使って．．)(doubleLoop)
 <<<
 1,1
 1,2
@@ -49,7 +49,7 @@ end
 3,2
 3,3
 >>>
-!!Ex2_6:九九表(printfを使って)(9x9)
+!!Ex2_5:九九表(printfを使って)(9x9)
 <<<
   1  2  3  4  5  6  7  8  9
   2  4  6  8 10 12 14 16 18

@@ -1,4 +1,4 @@
-class Def1
+class Exs
 
   def ex1_1
     return "hello world.\n"
@@ -13,5 +13,6 @@ class Def1
     text = sprintf("ans=%i\n",ans)
     return text
   end
+
 
 end
