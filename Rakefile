@@ -25,11 +25,7 @@ task :spec do
   p name=ARGV[1]
   if name!=nil then
     ENV['RUBYNOVICE_NAME']=name
-    begin
-      RSpec::Core::RakeTask.new(:spec)
-    rescue
-      p evar
-    end
+    RSpec::Core::RakeTask.new(:spec)
   else
     escape = [".", "..", "rubynovice", "rubynovice.rb", "rubynovice.rb~"]
     p dirs=Dir.entries('lib')
@@ -37,11 +33,7 @@ task :spec do
       if !escape.include?(dir) then
         p name = dir
         ENV['RUBYNOVICE_NAME']=name
-        begin
-          RSpec::Core::RakeTask.new(:spec)
-        rescue
-          p evar
-        end
+        RSpec::Core::RakeTask.new(:spec)
       end
     }
   end
