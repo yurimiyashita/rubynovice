@@ -81,10 +81,36 @@
 <li>setenv RUBYNOVICE_NAME hogehoge</li>
 </ul></li>
 <li>とかします．ここにはできるだけ個人情報(accountなど)がばれないものをいれるようにしてください．</li>
-<li>自分の名前をつけたファイルを./lib/hogehoge/hogehoge.rbなどとして準備する．</li>
-<li>class Def1に解答をつくる</li>
-<li>書き方は./lib/rubynovice/def1.rbを参照のこと．</li>
+<li>自分のすきな名前(hogehoge)をつけたディレクトリーを作り./lib/hogehoge/daddy.rbとして準備する．</li>
+<li>class Rubynoviceに解答をつくる</li>
+<li>書き方は./lib/daddy/ex1.rbを参照のこと．</li>
 </ul>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_cat'>cat</span> <span class='period'>.</span><span class='op'>/</span><span class='id identifier rubyid_lib'>lib</span><span class='op'>/</span><span class='id identifier rubyid_daddy'>daddy</span><span class='op'>/</span><span class='id identifier rubyid_daddy'>daddy</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span>
+<span class='comment'>#require &quot;ex1_1&quot;
+</span><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ex1</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ex2_2</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<pre class="code ruby"><code class="ruby">bob% cat ./lib/daddy/ex1.rb
+class Rubynovice
+  def ex1_1
+    puts &quot;Hello world!&quot;
+    p &quot;hello world.\n&quot;
+  end
+  def ex1_2
+    a=1+1
+    print a.to_s+&quot;\n&quot;
+    puts a
+    p a
+  end
+  def ex1_3
+    a=1+1
+    printf(&quot;ans=%i\n&quot;,a)
+    text = &quot;ans=#{a}\n&quot;
+  end
+end
+</code></pre>
 
 <h2>課題</h2>
 
@@ -98,7 +124,7 @@
 </div></div>
 
     <div id="footer">
-  Generated on Thu May 19 16:51:36 2016 by
+  Generated on Thu May 19 19:44:09 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>

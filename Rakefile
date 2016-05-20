@@ -8,7 +8,6 @@ end
 
 desc "make documents by yard"
 task :yard do
-
   files = Dir.entries('docs')
   files.each{|file|
     name=file.split('.')
@@ -21,7 +20,32 @@ task :yard do
   YARD::Rake::YardocTask.new
 end
 
-RSpec::Core::RakeTask.new(:spec)
+desc "run spec for all members."
+task :spec do
+  p name=ARGV[1]
+  if name!=nil then
+    ENV['RUBYNOVICE_NAME']=name
+    begin
+      RSpec::Core::RakeTask.new(:spec)
+    rescue
+      p evar
+    end
+  else
+    escape = [".", "..", "rubynovice", "rubynovice.rb", "rubynovice.rb~"]
+    p dirs=Dir.entries('lib')
+    dirs.each{|dir|
+      if !escape.include?(dir) then
+        p name = dir
+        ENV['RUBYNOVICE_NAME']=name
+        begin
+          RSpec::Core::RakeTask.new(:spec)
+        rescue
+          p evar
+        end
+      end
+    }
+  end
+end
 
 desc "all procedure for release."
 task :update =>[:setenv] do
@@ -34,13 +58,8 @@ end
 
 desc "setenv for release from Kwansei gakuin."
 task :setenv do
-#  status, stdout, stderr  = systemu "scselect \| grep \'\*\' |grep KG"
-#  puts stdout
-#  p stdout != nil
-#  if stdout != nil then
-    p command='setenv HTTP_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
-    system command
-    p command='setenv HTTPS_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
-    system command
-#  end
+  p command='setenv HTTP_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
+  system command
+  p command='setenv HTTPS_PROXY http://proxy.ksc.kwansei.ac.jp:8080'
+  system command
 end
