@@ -1,4 +1,5 @@
-class Yamane
+#class Yamane
+class Rubynovice
 
   def ex1_1
     return "hello world.\n"
