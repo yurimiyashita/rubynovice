@@ -1,10 +1,8 @@
-class Rubynovice
-  def ex2_1
-    8.times do
-      puts "I love shunkun.\n"
-    end
-  end
+# ex2_1
+1.times do
+  puts "I love shunkun."
 end
+
 # ex2_2
 for i in 1..5 do
   puts i
