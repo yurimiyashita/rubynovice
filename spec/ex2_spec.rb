@@ -10,8 +10,8 @@ describe Rubynovice do
     print Rubynovice::VERSION+"\n"
     expect(Rubynovice::VERSION).not_to be nil
   end
-  
-    it 'ex2_1 return "I love Shunkun.\n"*8', ex: 'ex2_1' do
+
+  it 'ex2_1 return "I love Shunkun.\n"*8', ex: 'ex2_1' do
     expected = "I love Shunkun.\nI love Shunkun.\nI love Shunkun.\nI love Shunkun.\nI love Shunkun.\nI love Shunkun.\nI love Shunkun.\nI love Shunkun.\n"
     expect(@rubynovice.ex2_1).to eq(expected)
   end
@@ -20,7 +20,7 @@ describe Rubynovice do
     expected = "1\n2\n3\n4\n5\n"
     expect(@rubynovice.ex2_2).to eq(expected)
   end
-  
+
   it 'ex2_3 return "10\n8\n6\n4\n2\n"', ex: 'ex2_3' do
     expected = "10\n8\n6\n4\n2\n"
     expect(@rubynovice.ex2_3).to eq(expected)
@@ -40,7 +40,7 @@ describe Rubynovice do
 EOS
     expect(@rubynovice.ex2_4).to eq(expected)
   end
-  
+
   it 'ex2_5 return 1*1..9*9', ex: 'ex2_5' do
     expected = <<EOS
   1  2  3  4  5  6  7  8  9
@@ -65,5 +65,5 @@ EOS
     expected = 3628800
     expect(@rubynovice.ex2_7).to eq(expected)
   end
-  
+
 end

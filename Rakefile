@@ -33,7 +33,8 @@ task :spec do
       if !escape.include?(dir) then
         p name = dir
         ENV['RUBYNOVICE_NAME']=name
-        RSpec::Core::RakeTask.new(:spec)
+        test=RSpec::Core::RakeTask.new(:spec)
+        test = nil
       end
     }
   end

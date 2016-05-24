@@ -1,11 +1,14 @@
 class Rubynovice
   def ex2_1
+    cont = ""
     8.times do
-      puts "I love shunkun.\n"
+      cont<< "I love Shunkun.\n"
     end
+    return cont
   end
 end
 # ex2_2
+
 for i in 1..5 do
   puts i
 end
