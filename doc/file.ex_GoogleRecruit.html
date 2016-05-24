@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: ex_GoogleRecruit
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.ex_GoogleRecruit.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: ex_GoogleRecruit</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>課題:Google Recruit</h1>
+
+<p>e(自然対数の底)の値で連続する10桁の数のうち，最初の素数をrubyで求めよ．ただし，e(自然対数の底)は200桁までで</p>
+
+<pre class="code text"><code class="text">2.71828182845904523536028747135266249775
+7247093699959574966967627724076630353547
+5945713821785251664274274663919320030599
+2181741359662904357290033429526059563073
+81323286279434907632338298807531952510190
+</code></pre>
+
+<p>である．これをテキストにコピーして読みこませよ．</p>
+
+<h2>解説</h2>
+
+<p>グーグル、謎の人材募集広告--シリコンバレーのビルボードに　</p>
+
+<p>Stefanie Olsen (CNET News.com) 2004/07/12 08:40</p>
+
+<blockquote>
+<p>先週、シリコンバレーの中心を走るハイウェー101沿いのビルボードに、複雑な数学の問題を載せた広告が現れた。</p>
+
+<p>(中略)</p>
+
+<p>この広告には、「{eの値中の、最初の連続する10桁の素数}.com」(&quot;{first 10 digit prime found in consecutive digits e}.com.&quot; )と書かれている。この答えの「7427466391.com」にアクセスすると、そのウェブページにはさらに別の問題(下記参照)が用意されているが、ここにもGoogleが関与していることを示すものは全くない。 この問題を解くと、Googleの研究開発部門「Google Labs」へのページに辿りつく。このページには、「Googleの構築を通して我々が学んだことの1つに、自分が何かを探しているとき、向こうも自分を探している場合のほうが見つかりやすいということがある。我々が探しているのは、世界最高のエンジニアであり、あなたこそその人なのだ」と書かれている。</p>
+</blockquote>
+
+<h2>解法</h2>
+
+<p>各個撃破(あるいは分割統治)で解いて行く．おおまかな流れは，</p>
+
+<ol>
+<li>eの値中の、連続する10桁の数
+
+<ol>
+<li>数の読み込み</li>
+<li>10桁の整数の生成</li>
+</ol></li>
+<li>素数判定</li>
+<li>最初の連続する10桁の素数を捜す
+である．</li>
+</ol>
+
+<h2>ヒント１：expの読み込み</h2>
+
+<p>テキストの読み込みは，</p>
+
+<pre class="code tcsh"><code class="tcsh">[BobsNewPBG4-6:~/Ruby/google] bob% cat google.rb
+exp1=gets.to_s.chomp
+puts exp1
+[BobsNewPBG4-6:~/Ruby/google] bob% ruby google.rb &lt; exp.txt
+2.71828182845904523536028747...
+</code></pre>
+
+<p>exp.txtの内容を&quot;&lt;&quot;で読み込ませている．</p>
+
+<h2>ヒント２：文字から数字の表示</h2>
+
+<p>文字列exp1を配列とみなしてexp1[0]として表示させようとすると失敗する．ここで出てくるのはasciiコードの番号．そこで，chrで表示させる．</p>
+
+<pre class="code tcsh"><code class="tcsh">[BobsNewPBG4-6:~/Ruby/google] bob% cat google2.rb
+exp1=gets.to_s.chomp
+puts exp1
+puts exp1[0]
+puts exp1[1]
+puts exp1[2].chr
+puts exp1[3].chr.to_i
+puts exp1[3..12].to_i
+</code></pre>
+
+<pre class="code tcsh"><code class="tcsh">[BobsNewPBG4-6:~/Ruby/google] bob% ruby google2.rb &lt; exp.txt
+2.71828182845904523536028747135266...
+50
+46
+7
+1
+1828182845
+</code></pre>
+
+<p>もっと簡単には最後のputs exp1[3..12].to_i でいいが，これは後の問題でつかえないのでもうすこしちまちま作る．</p>
+
+<h2>ヒント３：素数判定の高速化</h2>
+
+<p>素数判定programのloopの範囲2..i_maxにおいて，i_max=nではなく，i_max=Math::sqrt(n)にすれば高速化される．なぜか考えよ．</p>
+
+<pre class="code tcsh"><code class="tcsh">time ruby Google.rb &lt; exp.txt
+99:7427466391
+123:7413596629
+149:6059563073
+171:3490763233
+182:2988075319
+0.862u 0.007s 0:00.87 98.8% 0+0k 0+0io 0pf+0w
+</code></pre>
+
+<p>３章あるいは４章で作った，2..nのloopでは終わらない．</p>
+
+<h1>類題</h1>
+
+<p>Congratulations. You&#39;ve made it to level 2. Go to <a href="http://www.Linux.org">www.Linux.org</a> and enter Bobsyouruncle as the login and the answer to this equation as the password.</p>
+
+<pre class="code ruby"><code class="ruby">f(1)=7182818284
+f(2)=8182845904
+f(3)=8747135266
+f(4)=7427466391
+f(5)=__________
+</code></pre>
+</div></div>
+
+    <div id="footer">
+  Generated on Tue May 24 12:21:24 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.2).
+</div>
+
+  </body>
+</html>

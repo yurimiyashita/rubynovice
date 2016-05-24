@@ -39,7 +39,7 @@ task :spec do
   end
 end
 
-desc "all procedure for release."
+desc "submit your answers on github."
 task :update =>[:setenv] do
   system 'emacs ./lib/rubynovice/version.rb'
   system 'git add -A'

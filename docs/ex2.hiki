@@ -2,9 +2,9 @@
 
 !!Ex2_1:times
 
-百回愛してると表示する．
+はっかい愛してると表示する．
 <<< ruby
-1.times do
+8.times do
   puts "I love Shunkun."
 end 
 >>>
