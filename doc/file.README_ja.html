@@ -77,40 +77,45 @@
 <h2>使用法</h2>
 
 <ul>
-<li>自分のすきな名前(hogehoge)をつけたディレクトリーを作り&quot;./lib/hogehoge/daddy.rb&quot;を準備．</li>
+<li>自分の好きな名前(daddy)をつけたディレクトリーを作り&quot;./lib/daddy/ex_files.rb&quot;を準備．</li>
 <li>class Rubynoviceに解答を保存していく．</li>
-<li>書き方は./lib/daddy/ex1.rbを参照のこと．</li>
-<li>specで，個人ごとの検査を実行するには
+<li>書き方は./lib/daddy/ex1_classified.rbを参照のこと．</li>
+<li>rspecで，個人ごとの検査を実行するには
 
 <ul>
-<li>setenv RUBYNOVICE_NAME hogehogeとする．</li>
-<li>rake spec hogehogeとかでもOK．</li>
+<li>環境変数RUBYNOVICE_NAMEにディレクトリー名を入れる</li>
+<li>(csh,tcsh)setenv RUBYNOVICE_NAME daddy</li>
+<li>(bash,zsh)export RUBYNOVICE_NAME=daddy</li>
+<li>rspec spec/ex2_spec.rb</li>
+<li>rake spec hogehogeとかでもOKだが動作不安定．</li>
+<li>複数の検査を一度に処理しようとするときに前のclassが生き残っている？</li>
 </ul></li>
 </ul>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_cat'>cat</span> <span class='period'>.</span><span class='op'>/</span><span class='id identifier rubyid_lib'>lib</span><span class='op'>/</span><span class='id identifier rubyid_hogehoge'>hogehoge</span><span class='op'>/</span><span class='id identifier rubyid_daddy'>daddy</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span>
-<span class='comment'>#require &quot;ex1_1&quot;
-</span><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ex1</span><span class='tstring_end'>&quot;</span></span>
-<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ex2_2</span><span class='tstring_end'>&quot;</span></span>
+<pre class="code ruby"><code class="ruby">bob% cat lib/daddy/ex_files.rb
+#require &quot;ex1_1&quot;
+require &quot;ex1_classified&quot;
+require &quot;ex2_classified&quot;
 </code></pre>
 
-<pre class="code ruby"><code class="ruby">bob% cat ./lib/hogehoge/ex1.rb
+<pre class="code ruby"><code class="ruby">bob% cat lib/daddy/ex1_classified.rb 
 class Rubynovice
+
   def ex1_1
-    puts &quot;Hello world!&quot;
-    p &quot;hello world.\n&quot;
+    return &quot;hello world.\n&quot;
   end
+
   def ex1_2
-    a=1+1
-    print a.to_s+&quot;\n&quot;
-    puts a
-    p a
+    return 1+1
   end
+
   def ex1_3
-    a=1+1
-    printf(&quot;ans=%i\n&quot;,a)
-    text = &quot;ans=#{a}\n&quot;
+    ans = 1+1
+    text = sprintf(&quot;ans=%i\n&quot;,ans)
+    return text
   end
+
+
 end
 </code></pre>
 
@@ -135,7 +140,7 @@ end
 </div></div>
 
     <div id="footer">
-  Generated on Tue May 24 12:21:24 2016 by
+  Generated on Wed May 25 17:28:13 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>
