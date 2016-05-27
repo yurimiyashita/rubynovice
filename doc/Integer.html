@@ -188,15 +188,23 @@
 5
 6
 7
-8</pre>
+8
+9
+10
+11
+12</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/daddy/ex_prime.rb', line 2</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_prime?'>prime?</span>
-  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_nmax'>nmax</span><span class='op'>=</span><span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-  <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>2</span><span class='op'>..</span><span class='id identifier rubyid_nmax'>nmax</span> <span class='kw'>do</span>
-    <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='op'>%</span><span class='id identifier rubyid_i'>i</span><span class='op'>==</span><span class='int'>0</span>
+    <span class='comment'>#    p self
+</span>    <span class='id identifier rubyid_nmax'>nmax</span><span class='op'>=</span><span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+    <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>2</span><span class='op'>..</span><span class='id identifier rubyid_nmax'>nmax</span> <span class='kw'>do</span>
+    <span class='kw'>if</span> <span class='kw'>self</span><span class='op'>%</span><span class='id identifier rubyid_i'>i</span><span class='op'>==</span><span class='int'>0</span> <span class='kw'>then</span>
+<span class='comment'>#        p i
+</span>      <span class='kw'>return</span> <span class='kw'>false</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
   <span class='kw'>return</span> <span class='kw'>true</span>
 <span class='kw'>end</span></pre>
@@ -210,7 +218,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed May 25 21:36:19 2016 by
+  Generated on Fri May 27 11:52:53 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>

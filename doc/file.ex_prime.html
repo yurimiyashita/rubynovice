@@ -82,9 +82,41 @@
 3 が終了 0  0 [0] 1 0 1 0 1 1 1  ...  1  1   1  
 </code></pre>
 
+<h1>双子素数(twin_primes)</h1>
+
+<p>pも素数で，p+2も素数の時，これらを双子素数という．1から100までの双子素数を探せ．</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Integer</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_prime?'>prime?</span>
+      <span class='comment'>#    p self
+</span>      <span class='id identifier rubyid_nmax'>nmax</span><span class='op'>=</span><span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+      <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>2</span><span class='op'>..</span><span class='id identifier rubyid_nmax'>nmax</span> <span class='kw'>do</span>
+      <span class='kw'>if</span> <span class='kw'>self</span><span class='op'>%</span><span class='id identifier rubyid_i'>i</span><span class='op'>==</span><span class='int'>0</span> <span class='kw'>then</span>
+<span class='comment'>#        p i
+</span>        <span class='kw'>return</span> <span class='kw'>false</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_p'>p</span> <span class='int'>13</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span>
+<span class='id identifier rubyid_p'>p</span> <span class='int'>113</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span>
+<span class='id identifier rubyid_p'>p</span> <span class='int'>131</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span>
+<span class='id identifier rubyid_p'>p</span> <span class='int'>133</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_twin_primes'>twin_primes</span>
+  <span class='int'>101</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_i'>i</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>2</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_twin_primes'>twin_primes</span>
+</code></pre>
+
 <h1>メルセンヌ数</h1>
 
-<p>n = 257 までのメルセンヌ数 ($Mn = 2^n − 1$) で,素数であるときの n を表示
+<p>n = 257 までのメルセンヌ数 (Mn = 2^n − 1) で,素数であるときの n を表示
 するプログラムをつくれ.答えは,
 n = 2,3,5,7,13,17,19,31,61,89,107,127 だけであることを確かめよ.素数かどうかの判定は isprime(Mn) でできる.
 この関数の戻り値は真偽 (true or false) であるので,条件文 (if 文) で使える.</p>
@@ -126,6 +158,34 @@ n = 2,3,5,7,13,17,19,31,61,89,107,127 だけであることを確かめよ.素�
 <dt>参考文献</dt><dd>[好田] 好田順治,『素数の不思議』, 現代数学社, 1999.</dd>
 </dl></li>
 </ul>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Integer</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_prime?'>prime?</span>
+      <span class='comment'>#    p self
+</span>      <span class='id identifier rubyid_nmax'>nmax</span><span class='op'>=</span><span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+      <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>2</span><span class='op'>..</span><span class='id identifier rubyid_nmax'>nmax</span> <span class='kw'>do</span>
+      <span class='kw'>if</span> <span class='kw'>self</span><span class='op'>%</span><span class='id identifier rubyid_i'>i</span><span class='op'>==</span><span class='int'>0</span> <span class='kw'>then</span>
+<span class='comment'>#        p i
+</span>        <span class='kw'>return</span> <span class='kw'>false</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_p'>p</span> <span class='int'>13</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span>
+<span class='id identifier rubyid_p'>p</span> <span class='int'>113</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span>
+<span class='id identifier rubyid_p'>p</span> <span class='int'>131</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span>
+<span class='id identifier rubyid_p'>p</span> <span class='int'>133</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_twin_primes'>twin_primes</span>
+  <span class='int'>101</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_i'>i</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>2</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_twin_primes'>twin_primes</span>
+</code></pre>
 
 <pre class="code ruby"><code class="ruby">for p from 1 to 100 do
   if (isprime(p) and isprime(2*p+1)) then
@@ -249,7 +309,7 @@ end do;
 </div></div>
 
     <div id="footer">
-  Generated on Wed May 25 21:36:18 2016 by
+  Generated on Fri May 27 11:52:53 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>

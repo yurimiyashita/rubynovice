@@ -176,6 +176,28 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="top-level-namespace.html#twin_primes-instance_method" title="#twin_primes (instance method)">- (Object) <strong>twin_primes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -356,12 +378,46 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="twin_primes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>twin_primes</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/daddy/ex_prime.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_twin_primes'>twin_primes</span>
+  <span class='int'>101</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_i'>i</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>2</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_prime?'>prime?</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Wed May 25 21:36:19 2016 by
+  Generated on Fri May 27 11:52:53 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>

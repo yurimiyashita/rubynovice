@@ -49,7 +49,7 @@ class Rubynovice
 end
 ```
 
-## 課題
+## 課題(Githubでは，Sidebarからリンク)
 
 ### 入門課題
 1. [ex1(gets puts)](file.ex1.html)
@@ -59,5 +59,5 @@ end
 1. [ex5(method)](file.ex5.html)
 
 ### 発展課題
-1. [ex_d_1(prime_numbers)](file.ex_prime.html)
-1. [ex_d_2(GoogleRecruit)](file.ex_GoogleRecruit.html)
+1. [ex_prime](file.ex_prime.html)
+1. [ex_GoogleRecruit](file.ex_GoogleRecruit.html)
