@@ -30,6 +30,8 @@ task :spec do
     ENV['RUBYNOVICE_NAME']=name
     RSpec::Core::RakeTask.new(:spec)
   else
+    p "specify directory name as \'rake spec hogehoge\'."
+=begin
     escape = [".", "..", "rubynovice", "rubynovice.rb", "rubynovice.rb~"]
     p dirs=Dir.entries('lib')
     dirs.each{|dir|
@@ -40,6 +42,7 @@ task :spec do
         test = nil
       end
     }
+=end
   end
 end
 
