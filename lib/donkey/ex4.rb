@@ -21,28 +21,28 @@ class Rubynovice
     return answer
   end
   #ex4_2
-  def ex4_2
-    a=[1868,1912,1926,1989]
-    wareki = ""
-    a.each{|year|
+  def ex4_2(year)
+#    a=[1868,1912,1926,1989]
+#    wareki = ""
+#    a.each{|year|
       if year < 1868 then
         p "江戸以前"
-        wareki << "江戸以前"
+        return "江戸以前"
       elsif year < 1912 then
         print "明治#{year-1868+1}\n"
-        wareki << "明治#{year-1868+1}\n"
+        return "明治#{year-1868+1}"
       elsif year < 1926 then
         print "大正#{year-1912+1}\n"
-        wareki << "大正#{year-1912+1}\n"
+        return "大正#{year-1912+1}"
       elsif year < 1989 then
         print "昭和#{year-1926+1}\n"
-        wareki << "昭和#{year-1926+1}\n"
+        return "昭和#{year-1926+1}"
       else 
         print "平成#{year-1989+1}\n"
-        wareki << "平成#{year-1989+1}\n"
+        return "平成#{year-1989+1}"
       end
-    }
-    return wareki
+#    }
+#    return wareki
   end
   #ex4_3
   def ex4_3(a)
@@ -58,28 +58,24 @@ class Rubynovice
     end
   end
   #ex4_4
-  def ex4_4
-    a = [1999,2004,1900,2000]
-    result = ""
-    a.each{|year|
-      if year%4==0 then
-        if year%100==0 then
-          if year%400==0
-            p "leap year\n"
-            result << "leap year\n" 
-          else
-            p "non leap year\n"
-            result << "non leap year\n" 
-          end
-        else
+  def ex4_4(year)
+#    a = [1999,2004,1900,2000]
+    if year%4==0 then
+      if year%100==0 then
+        if year%400==0
           p "leap year\n"
-          result << "leap year\n" 
+          return true
+        else
+          p "non leap year\n"
+          return false
         end
       else
-        p "non leap yaer\n"
-        result << "non leap year\n" 
+        p "leap year\n"
+        return true
       end
-    }
-    return result
+    else
+      p "non leap yaer\n"
+      return false
+    end
   end
 end

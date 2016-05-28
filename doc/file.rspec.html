@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>
-  File: ex1
+  File: rspec
   
     &mdash; Documentation by YARD 0.8.7.6
   
@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  framesUrl = "frames.html#!file.ex1.html";
+  framesUrl = "frames.html#!file.rspec.html";
 </script>
 
 
@@ -32,7 +32,7 @@
       <div id="menu">
   
     <a href="_index.html">Index</a> &raquo; 
-    <span class="title">File: ex1</span>
+    <span class="title">File: rspec</span>
   
 
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
@@ -61,33 +61,33 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><div id='filecontents'><h1>Ex1. 代入および出力</h1>
+    <div id="content"><div id='filecontents'><h1>テスト駆動</h1>
 
-<h2>Ex1_1:hello worldを返せ．</h2>
+<p>テストは，Rakefileのあるrubynoviceのdirにおいて，</p>
 
-<pre class="code terminal"><code class="terminal">[bobsNewMacBook:~/Desktop/Ruby/ThreeDays] bob% ruby ex0.rb
-Hello world!
-[bobsNewMacBook:~/Desktop/Ruby/ThreeDays] bob% cat ex0.rb
-puts &quot;Hello world!&quot;
+<pre class="code tcsh"><code class="tcsh">rake spec donkey
 </code></pre>
 
-<h2>Ex1_2:変数への代入とreturn</h2>
+<p>とすると，ex1--ex5まで全てをtest.</p>
 
-<p>1＋1をaに代入して，その値を返す関数を作れ．</p>
+<p>あるいは，ex1だけを全て(ex1_1,ex1_2,ex1_3)のチェックは，</p>
 
-<pre class="code ruby"><code class="ruby">[bobsNewMacBook:~/Desktop/Ruby/ThreeDays] bob% ruby ex2.rb
-2
-[bobsNewMacBook:~/Desktop/Ruby/ThreeDays] bob% cat ex1.rb
-a=1+1
-return a
+<pre class="code tcsh"><code class="tcsh">setenv RUBYNOVICE_NAME donkey
+rspec spec/ex1_spec.rb
 </code></pre>
 
-<h2>Ex1_3:printf</h2>
+<p>でできる．さらに一つの課題だけをチェックするときは，</p>
 
-<p>printfで&quot;ans=2\n&quot;と返す関数を作れ．</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_expected'>expected</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ans=2\n</span><span class='tstring_end'>&quot;</span></span>
+<pre class="code tcsh"><code class="tcsh">bob% rspec --tag ex:&quot;ex1_1&quot; spec/ex1_spec.rb
 </code></pre>
+
+<p>とする．</p>
+
+<h1>解答記述</h1>
+
+<p>変数に出力として&quot;ans=2\n&quot;などを代入してprintfで出力させて，
+その変数をreturnするようにするとprintfの使い方とあわせて
+テスト駆動させている感じにみえる．rake時に緑字だけでなく，printfの出力についても確認．</p>
 </div></div>
 
     <div id="footer">

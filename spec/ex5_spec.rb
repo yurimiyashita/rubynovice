@@ -6,11 +6,6 @@ describe Rubynovice do
     @rubynovice = Rubynovice.new
   end
 
-  it 'has a version number' do
-    print Rubynovice::VERSION+"\n"
-    expect(Rubynovice::VERSION).not_to be nil
-  end
-
   it 'ex5_1(area(a,h)) return area of triangle.', ex: 'ex5_1' do
     expected = 3.0
     expect(@rubynovice.area(2.0,3.0)).to eq(expected)

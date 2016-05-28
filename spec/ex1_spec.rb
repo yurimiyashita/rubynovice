@@ -13,23 +13,19 @@ describe Rubynovice do
 
   it 'ex1_1 prints hello world',ex: 'ex1_1' do
     expected = "hello world.\n"
-    print @rubynovice.ex1_1
+    print @rubynovice.ex1_1+"\n"
     expect(@rubynovice.ex1_1).to eq(expected)
   end
-  #ここは普通にreturn "hello world.\n"として作成してくれるのを期待する．
 
   it 'ex1_2 return 1+1',ex: 'ex1_2' do
     expected = 2
+    print "#{@rubynovice.ex1_2}\n"
     expect(@rubynovice.ex1_2).to eq(expected)
   end
-  #1+1を変数に代入するかもしくはそのまま返されるのを期待する．
 
   it 'ex1_3 printf ans=2\n',ex: 'ex1_3' do
     expected = "ans=2\n"
+    print @rubynovice.ex1_3+"\n"
     expect(@rubynovice.ex1_3).to eq(expected)
   end
-  #出力として変数に"ans=2\n"を代入してprintfで出力させて，
-  #その変数をreturnするようにするとprintfの使い方とあわせて
-  #テスト駆動させている感じにみえる．rake時に緑字だけでなく，printfの出力についても確認．
-  
 end
