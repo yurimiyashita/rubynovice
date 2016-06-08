@@ -7,8 +7,9 @@ describe Rubynovice do
   end
 
   it 'ex3_1 returns a=[5,4,3,2,1]', ex: 'ex3_1' do
-    expected = [5,4,3,2,1]
-    expect(@rubynovice.ex3_1).to eq(expected)
+    expected = "5\n4\n3\n2\n1\n"
+    result=@rubynovice.ex3_1
+    expect(result).to eq(expected)
   end
 
   it 'ex3_2 returns random 10 numbers', ex: 'ex3_2' do
@@ -28,7 +29,9 @@ describe Rubynovice do
       tmp=rand(6)+1
       expected[tmp] += 1
     end
-    expect(@rubynovice.ex3_3).to eq(expected)
+    p expected
+    p result=@rubynovice.ex3_3
+    expect(result).to eq(expected)
   end
 
   it 'ex3_4 returns array from random 10 digits number.', ex: 'ex3_4' do
