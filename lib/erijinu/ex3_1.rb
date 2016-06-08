@@ -2,7 +2,10 @@ class Rubynovice
   def ex3_1
     a=[5,4,3,2,1]
     text=""
-    a.each{|ele| text<< "#{ele}\n"}
+    a.each{|ele| 
+      p ele
+      text<< "#{ele}\n"
+    }
     return text
   end
 

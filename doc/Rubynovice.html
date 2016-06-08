@@ -95,7 +95,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/donkey/ex4.rb<span class="defines">,<br />
-  lib/donkey/ex1.rb,<br /> lib/donkey/ex5.rb,<br /> lib/donkey/ex3.rb,<br /> lib/erijinu/ex1.rb,<br /> lib/donkey/ex2_2.rb,<br /> lib/donkey/ex1_1.rb,<br /> lib/yamane/yamane.rb,<br /> lib/rubynovice/version.rb,<br /> lib/daddy/ex2_classified.rb,<br /> lib/daddy/ex1_classified.rb</span>
+  lib/donkey/ex5.rb,<br /> lib/donkey/ex3.rb,<br /> lib/donkey/ex1.rb,<br /> lib/donkey/ex1_1.rb,<br /> lib/donkey/ex2_2.rb,<br /> lib/erijinu/ex3_1.rb,<br /> lib/erijinu/ex2_1.rb,<br /> lib/erijinu/ex1_1.rb,<br /> lib/yamane/yamane.rb,<br /> lib/rubynovice/version.rb,<br /> lib/daddy/ex2_classified.rb,<br /> lib/daddy/ex1_classified.rb</span>
 </dd>
   
 </dl>
@@ -883,23 +883,27 @@
       <pre class="lines">
 
 
+2
 3
 4
 5
 6
 7
 8
-9</pre>
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/erijinu/ex1.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'lib/donkey/ex2_2.rb', line 2</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ex2_1'>ex2_1</span>
-  <span class='id identifier rubyid_text'>text</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_answer'>answer</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_love'>love</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>I love Shunkun.\n</span><span class='tstring_end'>&quot;</span></span>
   <span class='int'>8</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_text'>text</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>I love Shunkun.\n</span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>end</span> 
-  <span class='kw'>return</span> <span class='id identifier rubyid_text'>text</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_love'>love</span>
+    <span class='id identifier rubyid_answer'>answer</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_love'>love</span>
+  <span class='kw'>end</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_answer'>answer</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1885,7 +1889,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sat Jun  4 09:41:15 2016 by
+  Generated on Wed Jun  8 19:38:46 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>

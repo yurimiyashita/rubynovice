@@ -72,12 +72,15 @@
 1
 </code></pre>
 
+<p>と出力せよ．specを通すためには，あらかじめ，text=&quot;&quot;を用意しておき，そこへ追加していくようにする．戻り値は，expected = &quot;5\n4\n3\n2\n1\n&quot;を期待している．以下を参考にせよ．</p>
+
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a'>a</span><span class='op'>=</span><span class='lbracket'>[</span><span class='int'>5</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>1</span><span class='rbracket'>]</span>
 <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>0</span><span class='op'>..</span><span class='int'>4</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_a'>a</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span>
 <span class='kw'>end</span>
-
 </code></pre>
+
+<p>上でもいいが，下のほうがruby的．</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_a'>a</span><span class='op'>=</span><span class='lbracket'>[</span><span class='int'>5</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>1</span><span class='rbracket'>]</span>
 <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ele'>ele</span><span class='op'>|</span> <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_ele'>ele</span> <span class='rbrace'>}</span>
@@ -140,7 +143,7 @@
 </div></div>
 
     <div id="footer">
-  Generated on Sat Jun  4 09:41:14 2016 by
+  Generated on Wed Jun  8 19:38:45 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>
