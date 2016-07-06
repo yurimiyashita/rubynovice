@@ -16,3 +16,11 @@ class Rubynovice
     printf("ans=%i\n",a)
     text = "ans=#{a}\n"
   end
+end
+
+if __FILE__ == $0 then
+  novice=Rubynovice.new
+  novice.ex1_1
+  novice.ex1_2
+  novice.ex1_3
+end
