@@ -1,11 +1,14 @@
-class Rubynovice 
- 
+class Rubynovice
+
   def ex2_1
+    text = ""
     8.times do
-    puts "I love Shunkun."
+      puts "I love Shunkun."
+      text << "I love Shunkun.\n"
     end
+    return text
   end
-  
+
 
   def ex2_2
     for i in 1..5 do
