@@ -3,7 +3,7 @@ class Rubynovice
   def ex1_1
    puts "Hello world!"
 
-    return "Hello world!"
+    return "hello world.\n"
 
   end
 
@@ -11,7 +11,8 @@ class Rubynovice
 
   def ex1_2
 
-    return 1+1
+    a = 1+1
+    return a
     
   end
  
@@ -19,7 +20,7 @@ class Rubynovice
 
     printf( "ans=2\\n\n" )
 
-    return "ans=2\\n\n"
+    return "ans=2\n"
 
   end
 
