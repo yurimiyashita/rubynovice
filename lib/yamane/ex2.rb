@@ -25,16 +25,19 @@ class Rubynovice
      end
      return answer
   end
+
   def ex2_4
     answer="" 
-    for i in 1..3 do
-       for j in 1..3 do
-          printf("%d,%d",i,j)
-         answer << "#{i,j}\n"
-       end
-     end
-     return answer
+    3.times{|i|
+      3.times{|j|
+        # printf("%d,%d\n",i+1,j+1)
+         answer << "#{i+1},#{j+1}\n"
+      }
+    }
+#    p answer
+    return answer
   end
+
   def ex2_5
      for i in 1..9 do
         for j in 1..9 do
@@ -44,6 +47,7 @@ class Rubynovice
          printf("\n")
       end
   end
+
   def ex2_6
      sum=0
      for i in 1..10 do
