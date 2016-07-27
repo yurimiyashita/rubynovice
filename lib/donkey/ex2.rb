@@ -12,7 +12,7 @@ end
 i = 10
 while i>0 do
   p i
-  i -= 2
+cd..  i -= 2
 end
 
 # ex2_4
