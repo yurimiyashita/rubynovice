@@ -34,9 +34,44 @@ class Rubynovice
       answer[i]=answer[i]+1
     end
 
-#    answer << "#{answer}"
+    #    answer << "#{answer}"
     return answer
 
-   end
+  end
+  
+  def ex3_4
 
+    srand(0)
+    p a = rand()
+    num=[]
+    10.times{
+      p b=(a*10).to_i
+      num << b
+      a=a*10-b
+    }
+    p num
+    return num
+  end
+
+
+  def ex3_5
+
+
+    srand(0)
+    p a = rand()
+    num=[]
+    10.times{
+      p b=(a*10).to_i
+      num << b
+      a=a*10-b
+    }
+    p num
+    answer=0
+
+    for i in 0..9 do
+      answer=answer*10+num[i]
+    end
+    return answer
+
+  end
 end
