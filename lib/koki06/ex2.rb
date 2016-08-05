@@ -1,48 +1,91 @@
 class Rubynovice
 
   def ex2_1
-    res=""
+
+    answer = ""
     8.times do
-      puts "I love Shunkun."
-      res<<      "I love Shunkun.\n"
+      answer <<  "I love Shunkun.\n"
     end
-    return res
+    
+    return answer
+
   end
 
-
-
+  
   def ex2_2
-    res = ""
+
+    answer =""
     for i in 1..5 do
-      puts i
-      res << i.to_s+"\n"
+      answer << "#{i}\n"
     end
-    return res
+    return answer
+
   end
-
-
+  
   def ex2_3
     i=10
-    res= ""
-    while i>=2
-      puts i
-      res << i.to_s+"\n"
+    answer="" 
+    
+    while i>=2 do
+      answer << "#{i}\n"
       i -= 2
+      
     end
-    return res
-  end
 
+    return answer
+  end
+  
+  
   def ex2_4
-    res=""
-    3.times { |i|
-      3.times{ |j|
-        print i+1,j+1,"\n"
-        res << "#{i+1},#{j+1}\n"
+    
+    answer=""
+    3.times{|i|
+      3.times{|j|
+        answer <<  "#{i+1},#{j+1}\n"
       }
     }
-    return res
+    return answer
+    
   end
+  
+  def ex2_5
+    
+    answer=""
+    
+    9.times{|i|
+      9.times{|j|
+        a=sprintf("%3d",(i+1)*(j+1))
+        answer << a
+      }
+      #print("\n")
+      answer << "\n"
+    }
+    
+    return answer
 
+  end
+  
+  def ex2_6
+    
+    sum=0
+    
+    10.times{|i|
+      sum=sum+(i+1)
+    }
+    
+    p sum   
+    
+  end  
+  
+  def ex2_7
+    
+    factorial=1
+    10.times{|i|
+      factorial = factorial*(i+1)
+    }
+    
+    p factorial
+  end
+  
 end
-
-Rubynovice.new.ex2_1
+>>>>>>> 73394e6953dccfc7df03e81dac61deaaeaa36e9b
