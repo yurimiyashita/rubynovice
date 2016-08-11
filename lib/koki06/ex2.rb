@@ -88,4 +88,4 @@ class Rubynovice
   end
   
 end
->>>>>>> 73394e6953dccfc7df03e81dac61deaaeaa36e9b
+

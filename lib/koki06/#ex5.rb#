@@ -22,11 +22,10 @@ class Rubynovice
       end
     end
 
-
     if i!=a-1 then
       return false
     else
-      return true  
+      return true
 
     end
   end
