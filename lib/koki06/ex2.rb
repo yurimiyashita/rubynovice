@@ -6,12 +6,11 @@ class Rubynovice
     8.times do
       answer <<  "I love Shunkun.\n"
     end
-    
+
     return answer
 
   end
 
-  
   def ex2_2
 
     answer =""
@@ -21,23 +20,20 @@ class Rubynovice
     return answer
 
   end
-  
+
   def ex2_3
     i=10
-    answer="" 
-    
+    answer=""
     while i>=2 do
       answer << "#{i}\n"
       i -= 2
-      
     end
 
     return answer
   end
-  
-  
+
+
   def ex2_4
-    
     answer=""
     3.times{|i|
       3.times{|j|
@@ -45,13 +41,10 @@ class Rubynovice
       }
     }
     return answer
-    
   end
-  
+
   def ex2_5
-    
     answer=""
-    
     9.times{|i|
       9.times{|j|
         a=sprintf("%3d",(i+1)*(j+1))
@@ -60,32 +53,25 @@ class Rubynovice
       #print("\n")
       answer << "\n"
     }
-    
     return answer
 
   end
-  
+
   def ex2_6
-    
     sum=0
-    
+
     10.times{|i|
       sum=sum+(i+1)
     }
-    
-    p sum   
-    
-  end  
-  
+    p sum
+
+  end
+
   def ex2_7
-    
     factorial=1
     10.times{|i|
       factorial = factorial*(i+1)
     }
-    
     p factorial
   end
-  
 end
-

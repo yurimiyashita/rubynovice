@@ -38,7 +38,7 @@ class Rubynovice
     return answer
 
   end
-  
+
   def ex3_4
 
     srand(0)
@@ -55,8 +55,6 @@ class Rubynovice
 
 
   def ex3_5
-
-
     srand(0)
     p a = rand()
     num=[]
@@ -75,4 +73,3 @@ class Rubynovice
 
   end
 end
-
