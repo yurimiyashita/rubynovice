@@ -1,0 +1,153 @@
+[RSpecについて]
+
+『describe / it / expectの役割の理解』
+
+
+（例）
+describe '四則演算' do
+  it '1 + 1 は 2 になること' do
+    expect(1 + 1).to eq 2
+  end
+end
+
+
+describeはテストのグループ化を宣言している.ここでは「四則演算に関するテストを書く」と宣言している.（日本語にすると　〜を述べる,〜を説明する,〜を記述するという意味）
+itはexampleという単位にまとめる役割をする. it do … endの中のエクスペクテーション（期待値と実際の値の比較）がすべてパスすれば,そのexampleはパスしたことになる.
+expect(X).to eq Y で記述するのがエクスペクテーション.XがYに等しくなることを期待するという意味になる.ここでの,expect(1+1).to eq 2は「1+1が2になることを期待する」テストになる.
+
+shouldではなくexpectを使う事（稀に不具合が発生することがあるため）
+
+
+
+『複数のexample』
+
+describeの中には複数のexample(it do … end)が書ける.
+
+(例)
+describe '四則演算' do
+  it '1 + 1 は 2 になること' do
+    expect(1 + 1).to eq 2
+  end
+  it '10 - 1 は 9 になること' do
+    expect(10 - 1).to eq 9
+  end
+end
+
+
+実行結果
+
+
+上の例ではit do … endが２回登場しているので「２つのexampleがパスした」と出力される.
+
+
+
+
+複数のエクスペクテーション』
+
+一つのexampleの中に複数のエクスペクテーションを書くのもOK
+
+
+(例)
+describe '四則演算' do
+  it '全部できること' do
+    expect(1 + 2).to eq 3
+    expect(10 - 1).to eq 9
+    expect(4 * 8).to eq 32
+    expect(40 / 5).to eq 8
+  end
+end
+
+ただし,このようにしてしまうと途中でテストが失敗したときに,その先のエクスペクテーションがパスするのかしないのかが予想できない.なので原則として「１つのexampleにつき１つのエクスペクテーション」で書いた方がテストの保守性が良くなる.
+
+
+『ネストしたdescribe』
+
+describeはいくつでも書くことができ,ネストさせることもできる.(基本的な役割はテストのグループ化)
+（例）
+
+describe '四則演算' do
+  describe '足し算' do
+    it '1 + 1 は 2 になること' do
+      expect(1 + 1).to eq 2
+    end
+  end
+  describe '引き算' do
+    it '10 - 1 は 9 になること' do
+      expect(10 - 1).to eq 9
+    end
+  end
+end
+
+適切にグループ化すると、「このdescribeブロックはこの機能をテストしている」と読み手がテストコードを理解しやすくなる.
+
+
+ 『contextの使い方』
+ここではこんなクラスをテストする.
+class User
+  def initialize(name:, age:)
+    @name = name
+    @age = age
+  end
+  def greet
+    if @age <= 12
+      "ぼくは#{@name}だよ。"
+    else
+      "僕は#{@name}です。"
+    end
+  end
+end
+
+テストコード
+describe User do
+  describe '#greet' do
+    it '12歳以下の場合、ひらがなで答えること' do
+      user = User.new(name: 'たろう', age: 12)
+      expect(user.greet).to eq 'ぼくはたろうだよ。'
+    end
+    it '13歳以上の場合、漢字で答えること' do
+      user = User.new(name: 'たろう', age: 13)
+      expect(user.greet).to eq '僕はたろうです。'
+    end
+  end
+end
+
+describeには,describe Userのように、文字列ではなくクラスを渡すこともできる.
+
+
+ ＊　context(文脈,状況)で条件別にグループ化する.
+RSpecにはdescribe以外にもcontextという機能でテストをグループ化することもできる.
+どちらも機能的には同じだが,contextは条件を分けたりするときに使うことが多い.
+ここでは「12歳以下の場合」と「13歳以上の場合」という二つの条件にグループ分けしてみた.
+
+describe User do
+  describe '#greet' do
+    context '12歳以下の場合' do
+      it 'ひらがなで答えること' do
+        user = User.new(name: 'たろう', age: 12)
+        expect(user.greet).to eq 'ぼくはたろうだよ。'
+      end
+    end
+    context '13歳以上の場合' do
+      it '漢字で答えること' do
+        user = User.new(name: 'たろう', age: 13)
+        expect(user.greet).to eq '僕はたろうです。'
+      end
+    end
+  end
+end
+
+describeと同様,contextで適切にグループ化すると,「このcontextブロックはこういう条件の場合をテストしている」と読み手がテストコードを理解しやすくなる.
+
+RSpecについて
+
+良い点
+
+RSpecのルールを覚えてそのルールに従えば、テストコードを書くことだけに集中できる。
+テストコードを読む人間もRSpecのルールや機能を知っていれば比較的テストコードを理解しやすい。
+describe や context を使ってうまく構造化してやれば、テストコードの意図を理解しやすい。
+shared_examples やグループの親子関係に従って実行される before ブロックなどテストコードをDRYにする機能が提供されている。
+悪い点
+
+良くも悪くも独自のDSL（ドメイン固有言語）を使っているために学習コストが大きい。RSpecという新しいテスト用言語を学習する必要がある。
+裏側の仕組みがブラックボックスになっていてなおかつ複雑（という話）。独自に拡張しようとすると地獄を見る（という噂）。
+独自のマッチャを1つ作るのもちょっと面倒。（ヘルパーメソッドを作って呼び出せばOK、というMinitestの手軽さには及ばない）

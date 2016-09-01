@@ -1,0 +1,135 @@
+minitest vs RSpec
+
+
+[Minitest]
+
+class GreeterTest < Minitest::Test
+
+      def test_says_hello_world
+		greeter = Greeter.new
+      			assert_equal ‘Hello,world!’,greeter.say 
+  			end
+end
+
+
+＊assert_equal 　xUnit形式
+
+
+[RSpec]
+
+describe Greeter do
+	 it ’says “Hello, world!”’do
+	    greeter=Greeter.new
+		expect(greeter.say).to.eq ‘Hello,world!’
+		end
+end
+
+
+＊expect(greeter.say).to.eq   Spec形式
+
+
+
+
+
+＊比較の観点は大きく分けて二つある
+シンタックスの比較
+　xUnit形式 vs Spec形式
+
+フレームワークとしての比較
+　Rspec vs Minitest
+
+
+
+
+＊xUnit形式　vs  Spec形式
+
+
+
+			　xUnit形式　　　　　　　　　Spec形式
+
+
+ー　シンタックス　　　　　ピュアRuby                 DSL（ドキュメント風）
+ 　　　　
+ー　習得ハードル　　　　　Rubyの文法　　　　　　　　 DSLを覚える必要あり
+
+ー　ロジックの自由度　　　Rubyの言語機能を　　　　   DSLに制約されやすい
+　 　　　　　　　　　　　　 フル活用できる　
+
+ー　検証メソッド　　　　　assert_equal A, B          expect(B).to eq A
+														                                         B.must_equal A
+
+ー 　テストの構造化　　　 クラスの継承　または       ブロックをネストさせる
+	   	          無理に構造化しない
+
+ー　命名の自由度　　　　　クラス名やメソッド名の　   命名は比較的自由
+			  重複に注意が必要
+			  (クラス名の重複)
+
+ー　保守性　　　　　　　　凝ったコードを書かれる  　 DSLのルールを逸脱しなければ
+                          と解析が大変               保守しやすい 　　　　　　　　 
+
+
+
+＊　DSL (describeやitなどのDSLのルール)
+Domain Specific Language(領域特化言語)
+Rubyなどの標準的な言語を使って作られた、領域(test)に特化した仕様を持った言語
+
+
+
+
+
+＊Rspec  vs  Minitest
+
+
+		           RSpec                       Minitest
+
+
+ー　利用率, 情報量　　　　 高い,多い　　　　　　　　　 低い,少ない
+
+ー　デフォルトの機能　　　 豊富                        必要最小限（プラグインで追加）
+
+ー　後方互換性の維持　　　 何度か大きな変更あり　　　　多少あり
+
+ー  Rubyとの関係　　　　   Ruby標準ではない　　　　　　Ruby標準バンドル
+		           要　gemインストール　　　　 gemインストールも可
+
+ー  Railsとの関係　　　　  Rails標準ではない　　　　　 Rails標準
+			　 要セットアップ　　　　　　　rails チュートリルでも採用
+
+ー　本体のコード　　　　　 多い, 複雑　　　　　　　　  少ない, シンプル
+
+
+
+
+
+＊（デフォルト）機能の比較
+
+RSpecにしかない機能
+
+ー　豊富なマッチャ（検証用のメソッド）, 高機能なモック, context, let!, shared example, 行指定実行
+　　ドキュメントの形式の結果表示
+
+Minitest にしかない機能
+
+ー　xUnit シンタックス, ベンチマークテスト, 平行実行機能, ランダム実行がデフォルト
+
+
+
+
+
+RSpec 
+
+ー　多機能で便利
+ー　わざわざ機能の少ないフレームワークに移行するメリットがない
+ー　ただし、単純なテストならMinitestでもOK(セットアップがいらないのは大きなメリット)
+
+
+
+Minitest の問題
+
+ー　プラグインを多用すると機能の衝突やメンテナンスで困りそう
+
+ー　複数のシンタックスがあるので、メンバーによって好みが分かれる
+
+ー　RSpecに比べるとまだまだ情報が少ない
+　　英語が苦手な人は特に大変

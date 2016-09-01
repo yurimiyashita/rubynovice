@@ -1,0 +1,216 @@
+使えるRSpec入門
+
+[概要]
+
+簡単なrubyのコードを書く場合、わざわざRspec書くのは大げさ
+
+簡単なテストコード　assert_equalが使えれば十分
+
+
+
+[目的]
+
+『いつでもどこでも動くテストコードを書きたい』
+
+
+ ー「素のruby」でぱぱっとシンプルなテストを書きたい (assert_equal　期待値)
+ ー gemのインストールはしたくない、他の人にもさせたくない
+ ー Ruby2.0以降ならどのrubyでも動いて欲しい
+
+
+
+
+
+[test::unitとは]
+
+Ruby用のxUnit系の単体テストフレームワーク. Ruby1.8まではRuby本体に標準添付されていたが,Ruby1.9.1からはminitestというフレームワークが標準添付されている.test-unitがRuby1.8に標準添付されていた頃はほとんど機能拡張などがされず,RSpecなど新しいテスティングフレームワークから見劣りするものとなっていた.しかし,Ruby標準添付ではなく,１つのプロジェクトとして開発が進められるようになってからは活発に開発が進められている.Ruby本体のバージョンアップに関係なく新しいバージョンをリリースできるようになったことも開発が活発になった理由の一つである.
+
+
+
+
+
+テスティングフレームワークの役割
+
+テストコードを実行し、期待した通りにプログラムが動作することを検証する.
+テストコードとは,プログラムをテストするプログラムである.
+検証結果（成功or失敗）を開発者に報告する.
+
+
+
+
+いつでもどこでも動くテストコードの雛形
+
+# test_sample.rb
+
+require 'test/unit'
+
+class Sample
+  def self.greeting
+    'Hello, world!'
+  end
+end
+
+class TestSample < Test::Unit::TestCase
+  def test_greeting
+    assert_equal 'Hello, world!', Sample.greeting
+  end
+end
+
+実行結果
+
+
+コードの説明
+Test::Unit::TestCaseを継承したクラスを用意し、test_xxxというメソッドを定義するとそのメソッドがテストの実行対象になり,ここではそれぞれTestSampleクラスとtest_greetingメソッドがそれに該当する。
+assert_equal(期待値),(実際の値)で実行結果を検証する.両者が一致すればテストをパスし,一致しない場合はテストが失敗する.
+（補足）test_xxxというメソッドはクラス内に複数あっても構わない.
+       また、1つのテストメソッド内にassert_equalを複数書くのもOK.
+      （とはいえ、原則として1テストメソッドにつき1アサーションとするのが望ましい）
+
+ 
+
+
+
+
+
+テストメソッドやアサーションを複数書く場合のコード例
+
+
+
+class TestSample < Test::Unit::TestCase
+  def test_greeting
+    assert_equal 'Hello, world!', Sample.greeting
+  end
+
+  def test_calc
+    assert_equal 4, (2 + 2)
+    assert_equal 1, (2 - 1)
+    assert_equal 6, (2 * 3)
+    assert_equal 3, (9 / 3)
+  end
+end
+
+
+実行結果
+/Users/Koki/rubynovice/lib/koki06% ruby test_sample.rb 
+
+Run options: 
+
+# Running tests:
+
+Finished tests in 0.008127s, 246.0933 tests/s, 615.2332 assertions/s.
+
+2 tests, 5 assertions, 0 failures, 0 errors, 0 skips
+
+ ruby -v: ruby 2.0.0p481 (2014-05-08 revision 45883) [universal.x86_64-darwin14]
+
+
+
+
+
+＊　minitest向けに書いた場合
+
+
+
+# Minitest 4までのコード
+require 'minitest/autorun'
+
+class Sample
+  def self.greeting
+    'Hello, world!'
+  end
+end
+
+class TestSample < MiniTest::Unit::TestCase
+  def test_greeting
+    assert_equal 'Hello, world!', Sample.greeting
+  end
+end
+
+
+
+
+# Minitest 5のコード
+require 'minitest/autorun'
+
+class Sample
+  def self.greeting
+    'Hello, world!'
+  end
+end
+
+class TestSample < Minitest::Test
+  def test_greeting
+    assert_equal 'Hello, world!', Sample.greeting
+  end
+end
+
+
+違いは継承元のクラスである.MiniTest 4 では　MiniTest::Unit::TestCaseを,
+
+Minitest 5 ではMinitest::Testをそれぞれ継承している.
+
+
+
+
+
+
+
+＊　RSpecで書いた場合
+
+# sample_spec.rb
+class Sample
+  def self.greeting
+    'Hello, world!'
+  end
+end
+
+describe Sample do
+  example 'greeting' do
+    expect(Sample.greeting).to eq 'Hello, world!'
+  end
+end
+
+実行にはgemのインストールが必要　　（gem install rspec）
+
+実行結果
+Finished in 0.00223 seconds (files took 0.26912 seconds to load)
+
+1 example, 0 failures
+
+
+
+
+
+
+
+Ruby標準のテストフレームワーク　（経緯）
+
+1.9.0以前 => Test::Unitが標準
+1.9.1から2.1まで => Minitestが標準
+2.2以降 => Minitest 5.4.3とTest::Unit 3.0.8が標準
+
+
+（詳細）
+1.9.0以前
+Test::Unitが標準なので（当然）  Test::Unit向けのコードが動く。
+Minitestは含まれないので（当然） Minitestのコードは動かない。 
+1.9.1から2.1まで
+MinitestがTest::Unit互換のラッパークラスを提供しているため、 Test::Unit向けのコードも動く。
+もちろんMinitestのコードも動く。ただし、Minitestがサポートする構文はバージョン4相当。
+2.2以降
+Minitestがバージョン5になり後方互換性がなくなったため、Test::Unitが復活。 引き続きTest::Unit向けのコードがサポートされる。
+Minitestのコードも引き続き動く。ただし、Minitestのバージョンが上がったため、Minitest 4のテストコードを実行すると警告が出る。
+
+
+ 以上のことを簡単にまとめると「Test::Unitのテストコードは互換性の観点から昔も今も将来もサポートさ れる」ということになる.
+
+
+
+単純でないテストコードを書きたい時
+自分が使い慣れているテスティングフレームワークや一番気に入っているテスティングフレームワークを使えばいいということ.
+Test::Unit,RSpecそれぞれ一長一短があり,好みも分かれるため.
+
+
+まとめ
+テストコードを使えば「puts を使って毎回目視で確認」なんてするよりも、高速で確実に実行結果を検証することができる.
+また,テストコードを書いておけば他の人も「このメソッドを呼ぶと何が起こるか」を理解しやすくなる.
