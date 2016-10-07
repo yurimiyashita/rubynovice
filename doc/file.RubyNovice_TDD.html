@@ -69,7 +69,7 @@
 
 <h3>printf</h3>
 
-<p>まずcodeの基本となる出力の構文を見てみます．</p>
+<p>まず，codeの基本となる出力の構文を見てみます．</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world.</span><span class='tstring_end'>&quot;</span></span>
 <span class='id identifier rubyid_p'>p</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world.</span><span class='tstring_end'>&quot;</span></span>
@@ -77,7 +77,7 @@
 <span class='id identifier rubyid_printf'>printf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world.\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 </code></pre>
 
-<p>puts,printは普通に使います．pはデバッグの時に便利です．また，printfもフォーマットを指定しての出力などに使います．</p>
+<p>puts,printは普通に使います．pはデバッグの時に便利です．また，printfはC言語と同じで，&#39;%&#39;によるフォーマットを指定しての出力などに使います．</p>
 
 <h3>method</h3>
 
@@ -95,9 +95,11 @@
 </span><span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bob</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 </code></pre>
 
-<p>ダブルコーテーションとシングルの違いを少し認識してください．また，ダブルコーテーションでは変数の展開が可能ですので，printfと同じようなことができます．</p>
+<p>defは，これから関数(method)を宣言(definition)することを意図してます．endまでが中身です．入力引数を()に書きます．出力はreturnで明示する場合もあります．省略する場合は最後に実行された操作結果が返ります．</p>
 
-<h3>assert</h3>
+<p>ダブルコーテーションとシングルの違いを少し認識してください．ダブルコーテーションでは変数(name)の中身をとりだすことが可能で，printfと同じようなことができます．シングルコーテーションはそのままが出力されます．</p>
+
+<h3>自作assert</h3>
 
 <p>さて，testデス．まずは，次の構文をよく読んでみてください．</p>
 
@@ -114,7 +116,7 @@
   <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>こんにちは, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_名前'>名前</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 
-<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_あいさつ'>あいさつ</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bob</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_あいさつ'>あいさつ</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>西谷先生</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 
 <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_イコール確認'>イコール確認</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>こんにちは, 西谷先生．</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_あいさつ'>あいさつ</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>西谷先生</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_イコール確認'>イコール確認</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>こんにちは, 西谷先生．</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_あいさつ'>あいさつ</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>西谷</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -129,13 +131,18 @@ true
 false
 </code></pre>
 
-<p>とちゃんと動きます．日本語で動作を記述すると，</p>
+<p>とちゃんと動きます．最後の一行の動作を，日本語で記述すると，</p>
 
-<pre class="code ruby"><code class="ruby">&quot;Hello, bob.&quot;とあいさつ(&quot;bob&quot;)のイコール確認をpしなさい．
+<pre class="code ruby"><code class="ruby">&quot;Hello, bob.&quot;と「あいさつ(&quot;bob&quot;)」のイコール確認をpしなさい．
 </code></pre>
 
 <p>となります．
-ただ，go globalなんで英語にしましょう．</p>
+ただ，go globalなんで英語にしましょう．さきほどの動作を英語に直すと，</p>
+
+<pre class="code ruby"><code class="ruby">puts assert_equal between &quot;Hello, bob.&quot; and greeting(&quot;bob&quot;).
+</code></pre>
+
+<p>となりますね．</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>def</span> <span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='id identifier rubyid_expected'>expected</span><span class='comma'>,</span> <span class='id identifier rubyid_actual'>actual</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_expected'>expected</span><span class='op'>==</span><span class='id identifier rubyid_actual'>actual</span>
@@ -149,15 +156,13 @@ false
   <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 
-<span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, bob.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bob</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, bob.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>donkey</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, bob.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bob</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, bob.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>donkey</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
 </code></pre>
-
-<p>これでも同様にテストできます．</p>
 
 <h2>testの導入</h2>
 
-<p>今後のために，もうすこし本格的なtesting frameworkを導入しましょう．これは，test/unitというgemで提供されています．これを動作させるにはclassというのが必要になります．</p>
+<p>今後のために，もうすこし本格的なtesting frameworkを導入しましょう．rubyで代表的なtest/unitというgemが提供されています．これを動作させるにはclassというのが必要になります．実際のcodeを見てもらいましょう．</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test/unit</span><span class='tstring_end'>&#39;</span></span>
 
@@ -166,16 +171,16 @@ false
 <span class='kw'>end</span>
 
 <span class='kw'>class</span> <span class='const'>Test_Sample</span> <span class='op'>&lt;</span> <span class='const'>Test</span><span class='op'>::</span><span class='const'>Unit</span><span class='op'>::</span><span class='const'>TestCase</span>
-  <span class='kw'>def</span> <span class='id identifier rubyid_test_test'>test_test</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_test_greeting'>test_greeting</span>
     <span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, bob.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bob</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, bob.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>donkey</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span>
 </code></pre>
 
-<p>そんなに変わってませんよね．なれるまで，あるいはclassが理解できるようになるまでは，呪文だと思ってください．</p>
+<p>そんなに変わってませんよね．慣れるまで，あるいはclassが理解できるようになるまでは，呪文だと思ってください．</p>
 
-<p>いいのは，</p>
+<p>仕様通りにコードが書けて，エラーがないと，</p>
 
 <pre class="code ruby"><code class="ruby">bob% ruby test_unit_test1.rb
 Loaded suite test_unit_test1
@@ -190,39 +195,39 @@ Finished in 0.001082 seconds.
 924.21 tests/s, 1848.43 assertions/s
 </code></pre>
 
-<p>と出力が綺麗になります．失敗するとちょっと落ち込む出力が出てきます．</p>
+<p>と出力が緑で心がやすらぎます．失敗するとちょっと落ち込む真っ赤な出力になります．</p>
 
-<p>でも，赤ばかりの状態から，緑になると達成感が湧いてきます．ここで，コーヒを飲みましょう．そして出力を眺めてください．</p>
+<p>でも，赤ばかりの状態から，緑になると達成感が湧いてきますよ．ここで，コーヒを飲みましょう．そして出力を眺めてください．</p>
 
-<p>赤い状態を作っておいて，次に緑になるためにcodeを修正していくことがプログラムの基本反復です．これは，テスト駆動開発(test driven development)と呼ばれています．動作を記述するテストを書いてから，中身の動作をそれにあわせて書いていく．失敗したら修正する．緑になったらてすと終了というのが，いいところです．</p>
+<p>赤い状態(status red)を作っておいて，次に緑になるためにcodeを修正していくことがプログラムの基本反復です．これは，テスト駆動開発(test driven development)と呼ばれています．動作を記述するテストを書いてから，中身の動作をそれにあわせて書いていく．失敗したら修正する．緑(all green)になったらテスト終了で次へ「進め(go)」というのが，いいところです．</p>
 
 <h2>testの分割</h2>
 
 <p>コードをいじるときはできるだけ短いほうが見やすく，間違いが起こりにくいです．そこで，テスト部と動作部を分けましょう．</p>
 
-<pre class="code ruby"><code class="ruby"> bob% cat test_greeting1.rb
-require &#39;test/unit&#39;
-require &#39;./greeting&#39;
+<pre class="code ruby"><code class="ruby"><span class='comment'># bob% cat test_greeting1.rb
+</span><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test/unit</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>./greeting</span><span class='tstring_end'>&#39;</span></span>
 
-class Test_Sample &lt; Test::Unit::TestCase
-  def test_greeting
-    assert_equal(&quot;Hello, bob.&quot;,greeting(&quot;bob&quot;))
-    assert_not_equal(&quot;Hello, bob.&quot;,greeting(&quot;donkey&quot;))
-  end
-end
+<span class='kw'>class</span> <span class='const'>Test_Sample</span> <span class='op'>&lt;</span> <span class='const'>Test</span><span class='op'>::</span><span class='const'>Unit</span><span class='op'>::</span><span class='const'>TestCase</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_test_greeting'>test_greeting</span>
+    <span class='id identifier rubyid_assert_equal'>assert_equal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, bob.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bob</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_assert_not_equal'>assert_not_equal</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, bob.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>donkey</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </code></pre>
 
-<pre class="code ruby"><code class="ruby">bob% cat greeting.rb
-def greeting(name)
-  return &quot;Hello, #{name}.&quot;
-end
+<pre class="code ruby"><code class="ruby"><span class='comment'># bob% cat greeting.rb
+</span><span class='kw'>def</span> <span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
 </code></pre>
 
 <p>です．</p>
 
-<h2>ファイルの直接指定 if $0==<strong>FILE</strong></h2>
+<h2>ファイルの直接指定 if $0==__FILE__</h2>
 
-<p>関数を独立させて，見やすい状態にしたうえで，codeの修正をしていくのですが，test/unitの出力ですとごちゃごちゃして見難いです．そこで，関数だけが動作するようにしておくと便利です．そのためのイディオムが存在します．</p>
+<p>codeは，関数を独立させて，見やすい状態にしたうえで，修正をしていきます．test/unitの出力ですとごちゃごちゃして見難いです．そこで，関数だけで動作するようにしておくと便利です．そのためのイディオムが存在します．</p>
 
 <pre class="code ruby"><code class="ruby"><span class='kw'>def</span> <span class='id identifier rubyid_greeting'>greeting</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
@@ -233,13 +238,15 @@ end
 <span class='kw'>end</span>
 </code></pre>
 
+<p>$0にはCLIのrubyで呼び出したファイル名が入っています．それと自分の名前(__FILE__)が同じ時はputs以下が動くようにしています．testなど他から呼び出されてgreeting.rbの内部の関数が動くときにはなにもしないというのが，このidiomのみそです．</p>
+
 <h2>課題：複数テストの導入</h2>
 
-<p>これでほぼ基本は終了です．</p>
+<p>これでテストの基本はほぼ終了です．これらの作業やcodeを組み合わせてcodingを進めていきます．</p>
 
 <pre class="code ruby"><code class="ruby">test_greeting.rbにあらたな関数good_byeのテストを加えてください．
 good_byeの仕様は次のとおりとしましょう．
- &#39;bob&#39;を受け取った場合は，&quot;good bye, bob&quot;と返す．
+ &#39;bob&#39;を受け取った場合は，&quot;good bye, bob.&quot;と返す．
 </code></pre>
 
 <h1>極道編を参考にtest/unitに変えられないかを模索した時のメモ</h1>
@@ -281,7 +288,7 @@ Hello, bob.
 </div></div>
 
       <div id="footer">
-  Generated on Wed Sep 14 15:30:25 2016 by
+  Generated on Fri Sep 23 15:36:56 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.2.2).
 </div>

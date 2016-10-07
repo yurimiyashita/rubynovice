@@ -6,14 +6,14 @@ test/unitを使ったtest駆動の導入テキスト
 !test/unitへの導入テキスト
 !! rubyのprogram
 !!!printf
-まずcodeの基本となる出力の構文を見てみます．
+まず，codeの基本となる出力の構文を見てみます．
 <<<ruby
 puts "Hello world."
 p "Hello world."
 print "Hello world.\n"
 printf("Hello world.\n")
 >>>
-puts,printは普通に使います．pはデバッグの時に便利です．また，printfもフォーマットを指定しての出力などに使います．
+puts,printは普通に使います．pはデバッグの時に便利です．また，printfはC言語と同じで，'%'によるフォーマットを指定しての出力などに使います．
 
 !!!method
 このままruby言語の構文に進んでもいいのですが，testを導入したいところです．
@@ -29,8 +29,11 @@ puts "Hello, bob."
 #puts greeting('bob')
 puts greeting("bob")
 >>>
-ダブルコーテーションとシングルの違いを少し認識してください．また，ダブルコーテーションでは変数の展開が可能ですので，printfと同じようなことができます．
-!!!assert
+defは，これから関数(method)を宣言(definition)することを意図してます．endまでが中身です．入力引数を()に書きます．出力はreturnで明示する場合もあります．省略する場合は最後に実行された操作結果が返ります．
+
+ダブルコーテーションとシングルの違いを少し認識してください．ダブルコーテーションでは変数(name)の中身をとりだすことが可能で，printfと同じようなことができます．シングルコーテーションはそのままが出力されます．
+
+!!!自作assert
 さて，testデス．まずは，次の構文をよく読んでみてください．
 <<<ruby
 # -*- coding: utf-8 -*-                                                         
@@ -46,7 +49,7 @@ def あいさつ(名前)
   return "こんにちは, #{名前}."
 end
 
-puts あいさつ("bob")
+puts あいさつ("西谷先生")
 
 p イコール確認("こんにちは, 西谷先生．",あいさつ("西谷先生"))
 p イコール確認("こんにちは, 西谷先生．",あいさつ("西谷"))
@@ -59,10 +62,12 @@ bob% ruby greeting0.rb
 true
 false
 >>>
-とちゃんと動きます．日本語で動作を記述すると，
- "Hello, bob."とあいさつ("bob")のイコール確認をpしなさい．
+とちゃんと動きます．最後の一行の動作を，日本語で記述すると，
+ "Hello, bob."と「あいさつ("bob")」のイコール確認をpしなさい．
 となります．
-ただ，go globalなんで英語にしましょう．
+ただ，go globalなんで英語にしましょう．さきほどの動作を英語に直すと，
+ puts assert_equal between "Hello, bob." and greeting("bob").
+となりますね．
 <<<ruby
 def assert_equal(expected, actual)
   if expected==actual
@@ -76,12 +81,12 @@ def greeting(name)
   return "Hello, #{name}."
 end
 
-assert_equal("Hello, bob.",greeting("bob"))
-assert_equal("Hello, bob.",greeting("donkey"))
+p assert_equal("Hello, bob.",greeting("bob"))
+puts assert_equal("Hello, bob.",greeting("donkey"))
 >>>
-これでも同様にテストできます．
+
 !! testの導入
-今後のために，もうすこし本格的なtesting frameworkを導入しましょう．これは，test/unitというgemで提供されています．これを動作させるにはclassというのが必要になります．
+今後のために，もうすこし本格的なtesting frameworkを導入しましょう．rubyで代表的なtest/unitというgemが提供されています．これを動作させるにはclassというのが必要になります．実際のcodeを見てもらいましょう．
 <<<ruby
 require 'test/unit'
 
@@ -90,15 +95,15 @@ def greeting(name)
 end
 
 class Test_Sample < Test::Unit::TestCase
-  def test_test()
+  def test_greeting
     assert_equal("Hello, bob.",greeting("bob"))
     assert_equal("Hello, bob.",greeting("donkey"))
   end
 end
 >>>
-そんなに変わってませんよね．なれるまで，あるいはclassが理解できるようになるまでは，呪文だと思ってください．
+そんなに変わってませんよね．慣れるまで，あるいはclassが理解できるようになるまでは，呪文だと思ってください．
 
-いいのは，
+仕様通りにコードが書けて，エラーがないと，
 <<<
 bob% ruby test_unit_test1.rb
 Loaded suite test_unit_test1
@@ -112,16 +117,16 @@ Finished in 0.001082 seconds.
 --------------------------------------------------------------------------------
 924.21 tests/s, 1848.43 assertions/s
 >>>
-と出力が綺麗になります．失敗するとちょっと落ち込む出力が出てきます．
+と出力が緑で心がやすらぎます．失敗するとちょっと落ち込む真っ赤な出力になります．
 
-でも，赤ばかりの状態から，緑になると達成感が湧いてきます．ここで，コーヒを飲みましょう．そして出力を眺めてください．
+でも，赤ばかりの状態から，緑になると達成感が湧いてきますよ．ここで，コーヒを飲みましょう．そして出力を眺めてください．
 
-赤い状態を作っておいて，次に緑になるためにcodeを修正していくことがプログラムの基本反復です．これは，テスト駆動開発(test driven development)と呼ばれています．動作を記述するテストを書いてから，中身の動作をそれにあわせて書いていく．失敗したら修正する．緑になったらてすと終了というのが，いいところです．
+赤い状態(status red)を作っておいて，次に緑になるためにcodeを修正していくことがプログラムの基本反復です．これは，テスト駆動開発(test driven development)と呼ばれています．動作を記述するテストを書いてから，中身の動作をそれにあわせて書いていく．失敗したら修正する．緑(all green)になったらテスト終了で次へ「進め(go)」というのが，いいところです．
 
 !! testの分割
 コードをいじるときはできるだけ短いほうが見やすく，間違いが起こりにくいです．そこで，テスト部と動作部を分けましょう．
 <<<ruby
- bob% cat test_greeting1.rb
+# bob% cat test_greeting1.rb
 require 'test/unit'
 require './greeting'
 
@@ -134,14 +139,15 @@ end
 >>>
 
 <<<ruby
-bob% cat greeting.rb
+# bob% cat greeting.rb
 def greeting(name)
   return "Hello, #{name}."
 end
 >>>
 です．
+
 !! ファイルの直接指定 if $0==__FILE__
-関数を独立させて，見やすい状態にしたうえで，codeの修正をしていくのですが，test/unitの出力ですとごちゃごちゃして見難いです．そこで，関数だけが動作するようにしておくと便利です．そのためのイディオムが存在します．
+codeは，関数を独立させて，見やすい状態にしたうえで，修正をしていきます．test/unitの出力ですとごちゃごちゃして見難いです．そこで，関数だけで動作するようにしておくと便利です．そのためのイディオムが存在します．
 <<<ruby
 def greeting(name)
   return "Hello, #{name}."
@@ -151,13 +157,14 @@ if $0 == __FILE__
   puts greeting('bob')
 end
 >>>
+$0にはCLIのrubyで呼び出したファイル名が入っています．それと自分の名前(__FILE__)が同じ時はputs以下が動くようにしています．testなど他から呼び出されてgreeting.rbの内部の関数が動くときにはなにもしないというのが，このidiomのみそです．
 
 !! 課題：複数テストの導入
-これでほぼ基本は終了です．
+これでテストの基本はほぼ終了です．これらの作業やcodeを組み合わせてcodingを進めていきます．
 <<<
 test_greeting.rbにあらたな関数good_byeのテストを加えてください．
 good_byeの仕様は次のとおりとしましょう．
- 'bob'を受け取った場合は，"good bye, bob"と返す．
+ 'bob'を受け取った場合は，"good bye, bob."と返す．
 >>>
 
 

@@ -1,5 +1,4 @@
+--markup-provider=redcarpet
+--markup=markdown
 -
-rubynovice.wiki/*.md
-
-
-
+**/*.md
